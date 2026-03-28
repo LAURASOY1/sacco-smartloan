@@ -27,9 +27,9 @@ Tools: VS Code, PyCharm, or any code editor
 
 Installation Instructions
 1. Clone the repository
-git clone https://github.com/yourusername/fastapi-loan-app.git
+2. https://github.com/LAURASOY1/sacco-smartloan
 cd fastapi-loan-app
-2. Create a virtual environment
+3. Create a virtual environment
 python -m venv venv
 # Activate environment
 source venv/bin/activate    # Linux / Mac
