@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kenyan SACCO Loan App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🇰SACCO SmartLoan</h1>
+    <p>Check your loan eligibility instantly</p>
+
+    <form action="/loan" method="post">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="number" name="salary" placeholder="Gross Salary (KES)" required>
+        <input type="number" name="loan_amount" placeholder="Loan Requested (KES)" required>
+        <input type="number" name="months" placeholder="Repayment Period (months)" required>
+        <button type="submit">Apply 🚀</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>Hello {{name}}</h2>
+        <p>Status: {{result.status}}</p>
+
+        {% if result.status == "Approved ✅" %}
+            <p>Net Salary: {{result.net_salary}}</p>
+            <p>Total Loan: {{result.total}}</p>
+            <p>Monthly Payment: {{result.monthly}}</p>
+            <p>Credit Score: {{result.score}}</p>
+            <p>Risk: {{result.risk}}</p>
+        {% else %}
+            <p>Reason: {{result.reason}}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if history %}
+    <div class="history">
+        <h3>📊 Loan History</h3>
+        <ul>
+            {% for item in history %}
+                <li>{{item.name}} - {{item.loan}} ({{item.status}})</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
